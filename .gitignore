@@ -1,0 +1,21 @@
+# 1. 虛擬環境 (Virtual Environment)
+venv/
+.venv/
+env/
+
+# 2. Python 自動產生的編譯快取檔
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# 3. 環境變數與秘密金鑰檔案 (含有 JWT Secret、資料庫密碼等)
+.env
+
+# 4. SQLite 本地資料庫檔案 (避免把測試資料丟上 GitHub)
+*.db
+*.sqlite3
+
+# 5. 開發工具的專屬設定檔 (例如 VS Code)
+.vscode/
+.DS_Store
