@@ -1,6 +1,3 @@
-# campus-events
-
-```markdown
 #  Campus-Events 
 ## 說明
 這是一個基於 **FastAPI** 框架開發的後端練習專案，核心功能圍繞在「學生註冊、登入驗證」與「JWT 安全認證機制」。本專案嚴格遵循 RESTful API 設計規範，並整合了 SQLAlchemy ORM 進行資料庫管理。
@@ -31,7 +28,6 @@ backend/
 
 ```
 
----
 
 ## 🚀 本地開發環境架構與啟動指南
 
