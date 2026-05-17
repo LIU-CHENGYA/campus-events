@@ -10,6 +10,11 @@ from sqlalchemy.orm import Session
 from database import get_db
 from models import User
 
+import os
+from dotenv import load_dotenv
+# 讀取 .env 檔案
+load_dotenv()
+
 # ---------------- 第一層（密碼層）----------------------- #
 # 設定「密碼雜湊策略管理器」，來源為 passlib
 pwd_context = CryptContext(
@@ -32,9 +37,16 @@ def verify_password(
     )
 
 # ---------------- WT Token 的產生 + 驗證 -------------- #
-SECRET_KEY = "your-secret-key-change-in-production"
-ALGORITHM = "HS256"
-ACCESS_TOKEN_EXPIRE_MINUTES = 60 * 24  # 24小時 # token 幾分鐘後過期
+# 一開始開發可以這樣寫
+# SECRET_KEY = "your-secret-key-change-in-production"
+# ALGORITHM = "HS256"
+# ACCESS_TOKEN_EXPIRE_MINUTES = 60 * 24  # 24小時 # token 幾分鐘後過期
+
+# 從環境變數中安全地抓取，如果抓不到，才用後面的字串當備用（通常用於本地測試防呆）
+SECRET_KEY = os.getenv("SECRET_KEY", "temporary-local-dev-key")
+ALGORITHM = os.getenv("ALGORITHM", "HS256")
+ACCESS_TOKEN_EXPIRE_MINUTES = int(os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES", 1440))
+
 
 ## 產生 JWT
 def create_access_token(data: dict):
